@@ -1,4 +1,14 @@
 require 'sinatra'
+require 'sinatra/config_file'
+
+# read from config
+config_file './config/application.yaml'
+
+get '/' do
+  something = settings.foo
+  status 200
+  body "config: #{something}"
+end
 
 # probes
 get '/health/liveness' do
